@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Task() {
+const [currentTask, SetTask] = useState("ALL")
+
+function handleTaskCategory(event){
+  SetTask(event.target.value)
+}
+
+function handleTaskText(event){
+  SetTask(event.target.value)
+}
+
+function Task({tasks}) {
   return (
     <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
+      <div className="label">{handleTaskCategory}</div>
+      <div className="text">{handleTaskText}</div>
       <button className="delete">X</button>
     </div>
   );

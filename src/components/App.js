@@ -7,13 +7,13 @@ import { CATEGORIES, TASKS } from "../data";
 console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
-function App() {
+function App({TASKS}) {
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter />
       <NewTaskForm />
-      <TaskList />
+      <TaskList tasks={TASKS}/>
     </div>
   );
 }
