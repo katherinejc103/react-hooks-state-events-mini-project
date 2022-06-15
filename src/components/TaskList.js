@@ -1,10 +1,11 @@
 import React from "react";
+import Task from "./Task";
 
 function TaskList({tasks}) {
+  const tasksToRender = tasks.map(t => (<Task task={t} />))
   return (
     <div className="tasks">
-      {tasks}
-      <Task tasks={tasks}/>
+      {tasksToRender}
     </div>
   );
 }
