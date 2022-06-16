@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Task({text, category, onDeleteTask, key}) {
+function Task({text, category, onDeleteTask}) {
  
   function handleDeleteClick(){
     console.log(text)
@@ -9,7 +9,7 @@ function Task({text, category, onDeleteTask, key}) {
   }
   
   return (
-    <div className="task" key={key}>
+    <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
       <button onClick={handleDeleteClick}className="delete" >

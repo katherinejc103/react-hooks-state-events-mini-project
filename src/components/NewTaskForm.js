@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-function NewTaskForm({categories, setNewTaskList, tasks, key}) {
+function NewTaskForm({categories,  onTaskFormSubmit}) {
 
   const [newDetails, setNewDetails] = useState('')
   const [newCategory, setNewCategory] = useState('')
 
-const categorySelectOption = categories.map(category => category==="All" ? <option>   </option> : <option>{category}</option> )
+const categorySelectOption = categories.map(category => category==="All" ? <option key={category}>   </option> : <option>{category}</option> )
 
 function handleDetailsChange(e){
   setNewDetails(e.target.value)
@@ -18,22 +18,22 @@ function handleCategoryChange(e) {
 function handleSubmit(e){
   e.preventDefault();
   const newTask = {text: newDetails, category: newCategory}
-console.log(newTask)
-  setNewTaskList( [...tasks, newTask])
+  onTaskFormSubmit(newTask)
+
 }
   return (
-    <form className="new-task-form">
+    <form className="new-task-form" onSubmit={handleSubmit}>
       <label>
         Details
         <input type="text" name="text" onChange={handleDetailsChange}/>
       </label>
       <label>
         Category
-        <select name="category" key={key} onChange={handleCategoryChange}>
+        <select name="category" onChange={handleCategoryChange}>
           {categorySelectOption}
         </select>
       </label>
-      <input type="submit" value="Add task" onClick={handleSubmit}/>
+      <input type="submit" value="Add task" />
     </form>
   );
 }

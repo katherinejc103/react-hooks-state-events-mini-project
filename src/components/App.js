@@ -24,11 +24,16 @@ function App() {
   }
 const filteredTask = category === "All" ? tasks : tasks.filter(task => task.category === category) 
 console.log(tasks)
+
+function onTaskFormSubmit(task){
+  console.log(task)
+  setTasks( [...tasks, task])
+}
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selected={category} onClickAll={onClickAll}/>
-      <NewTaskForm categories={CATEGORIES} setNewTaskList={setTasks} tasks={tasks}/>
+      <NewTaskForm categories={CATEGORIES} setNewTaskList={setTasks} tasks={tasks}  onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList onDeleteTask={handleDeleteTask} tasks={filteredTask}/>
     </div>
   );
