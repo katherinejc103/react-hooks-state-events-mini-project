@@ -11,23 +11,25 @@ function App() {
   const [tasks, setTasks] = useState(TASKS);
   const [category, setCategory] = useState("All");
   
+  
 
   function handleDeleteTask(deletedTask) {
     setTasks(tasks.filter((task) => task.text !== deletedTask));
   }
 
-  function onClickAll(event){
-    event.preventDefault();
-    setCategory(category)
-
+  function onClickAll(selectedCategory){
+    // event.preventDefault();
+    setCategory(selectedCategory)
+    console.log(selectedCategory)
   }
-
+const filteredTask = category === "All" ? tasks : tasks.filter(task => task.category === category) 
+console.log(tasks)
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selected={category} onClickAll={onClickAll}/>
-      <NewTaskForm categories={CATEGORIES}/>
-      <TaskList onDeleteTask={handleDeleteTask} tasks={tasks}/>
+      <NewTaskForm categories={CATEGORIES} setNewTaskList={setTasks} tasks={tasks}/>
+      <TaskList onDeleteTask={handleDeleteTask} tasks={filteredTask}/>
     </div>
   );
 }
