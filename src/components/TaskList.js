@@ -4,7 +4,7 @@ import Task from "./Task";
 function TaskList({tasks, onDeleteTask}) {
   const tasksToRender = tasks.map(t => (
   <Task 
-  key={t.text}
+  key={key}
   text={t.text}
   category={t.category}
   onDeleteTask={onDeleteTask}
